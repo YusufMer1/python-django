@@ -1,0 +1,142 @@
+/* Genel Stil ve Fontlar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #1e88e5; /* Mavi tonu */
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* Kapsayıcı (Container) Stilini Ekleme */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablo Stilleri (Aidat Durumu) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #1e88e5;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Borç/Durum Etiketleri */
+span[style="color: red;"] {
+    color: #d32f2f !important;
+    font-weight: bold;
+}
+
+span[style="color: green;"] {
+    color: #388e3c !important;
+    font-weight: bold;
+}
+
+/* Buton ve Link Stilleri */
+button, a.button {
+    background-color: #4CAF50; /* Yeşil */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover, a.button:hover {
+    background-color: #45a049;
+}
+
+/* Yönetici linkleri */
+p a:first-child {
+    background-color: #ff9800; /* Turuncu */
+    padding: 8px 12px;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* Çıkış butonu */
+form[action$="/logout/"] button {
+    background-color: #757575; /* Gri */
+    margin-top: 20px;
+    padding: 8px 15px;
+}
+.login-form, .register-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fcfcfc;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Padding ve border dahil genişlik hesaplama */
+}
+
+/* Auth Linkleri (Kayıt Ol, Yönetici Girişi) */
+.auth-links {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.auth-links p {
+    margin: 10px 0;
+}
+
+.admin-link a {
+    color: #ff9800; /* Turuncu tonu */
+    font-weight: bold;
+}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Yeni Hesap Oluştur{% endblock %}
+
+{% block content %}
+    <h1>Yeni Hesap Oluştur</h1>
+
+    {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+
+    <form method="POST" class="register-form">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                {{ field }}
+                {% if field.errors %}
+                    <small style="color: red;">{{ field.errors }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="button">Kayıt Ol</button>
+    </form>
+
+    <div class="auth-links">
+        <p>Zaten hesabın var mı? <a href="{% url 'login' %}">Giriş yapın.</a></p>
+    </div>
+{% endblock %}

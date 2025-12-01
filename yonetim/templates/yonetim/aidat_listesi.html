@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Aidat Durumu{% endblock %}
+
+{% block content %}
+<h1>Aidat Durumu</h1>
+
+{% if rol == 'Y' %}
+    <p><a href="{% url 'toplu_borclandirma' %}">Yönetici: Toplu Borçlandırma Yap</a></p>
+{% endif %}
+
+{% for message in messages %}
+    <p style="color: green;">{{ message }}</p>
+{% endfor %}
+
+<table>
+    <thead>
+        <tr>
+            {% if rol == 'Y' %}<th>Daire No</th>{% endif %}
+            <th>Açıklama</th>
+            <th>Tutar</th>
+            <th>Vade Tarihi</th>
+            <th>Durum</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for aidat in aidatlar %}
+        <tr>
+            {% if rol == 'Y' %}<td>{{ aidat.daire.daire_no }}</td>{% endif %}
+            <td>{{ aidat.aciklama }}</td>
+            <td>{{ aidat.tutar }} TL</td>
+            <td>{{ aidat.vade_tarihi|date:"d M Y" }}</td>
+            <td>
+                {% if aidat.odendi_mi %}
+                    <span style="color: green;">Ödendi ({{ aidat.odeme_tarihi|date:"d M Y" }})</span>
+                {% else %}
+                    <span style="color: red;">Ödenmedi</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if rol == 'S' and not aidat.odendi_mi %}
+                    <form method="POST" action="{% url 'aidat_ode' aidat.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Ödeme Yap (Simülasyon)</button>
+                    </form>
+                {% elif rol == 'Y' %}
+                    Görüntüle
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Çıkış Yap</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+# .gitignore
+*.pyc
+*~
+__pycache__
+myvenv/  # Sanal ortam klasörünüzün adı
+db.sqlite3 # Veritabanını canlıya yüklemeyin!
+/staticfiles/ # collectstatic ile oluşan klasörü canlıya yüklemeyin
+.DS_Store
